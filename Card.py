@@ -1,33 +1,40 @@
 class Bank_Universal:
-    def __init__(self,value, account):
-        self.value = value
+    def __init__(self, account):
         self.account = account
     
-    def pay(self):
-        if self.value > self.account.balance:
+    def pay(self, value):
+        if value > self.account.balance:
             print("Saldo insuficiente.")
         else:
             print("Pagamento efetuado com sucesso.")
-            print(f"Seu saldo: {self.account.balance - self.value}")
+            print(f"Seu saldo: {self.account.balance - value}")
 
     def deposit(self, value):
         account.balance = account.balance + value
         print("Depósito feito com sucesso.")
 
-def Bank_Nubank(Bank_Universal):
-    pass
+class Bank_Nubank(Bank_Universal):
+    def __init__(self, account):
+        self.account = account
 
 class Account:
-    def __init__(self, name, balance):
+    def __init__(self, name, lastname, balance):
         self.name = name
+        self.lastname = lastname
         self.balance = balance
+
+    @property
+    def dice(self):
+        print("=-"*15)
+        print(f"Seus dados: \nNome:{self.name} \nSobrenome:{self.lastname}")
+        print("=-"*15)
+
+
     
-    
-
-account = Account("isaias", 1200)
-bank = Bank_Nubank(500, account)
-
-bank.pay()
+account = Account("Isaias", "Ramos", 1200)
+bank_nubank = Bank_Nubank(account)
 
 
 
+account.balance
+bank_nubank.pay(200)
